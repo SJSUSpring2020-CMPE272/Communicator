@@ -11,7 +11,7 @@ This application will translate signs into text and speech to help people who ca
 
 __Goal :__
  - To ease the communication with deaf and dumb people. 
- - To enable more people to communicate with specially skilled people. 
+ - To enable more people to communicate with specially abled people. 
 
 __Technologies :__
  - Machine Learning using TensorFlow
