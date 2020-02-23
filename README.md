@@ -27,7 +27,7 @@ __Project Title : Trip Advisor__
 __Description :__
 On scanning a photo of a place, this application would suggest the user for further places he can visit.
 
-__Goal : __
+__Goal :__
 
 It helps you find places you would like to visit based on your previous search.
 
@@ -38,7 +38,7 @@ Machine Learning, node, react
 ## Idea 3 :
 __Project Title :  Hate Content detector__
 
-___Description : __
+__Description : __
 
 This application would help to detect and report the malicious content.
 
