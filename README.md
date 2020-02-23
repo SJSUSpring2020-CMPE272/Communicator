@@ -31,14 +31,14 @@ __Goal :__
 
 It helps you find places you would like to visit based on your previous search.
 
-__Technologies __
+__Technologies :__
 
 Machine Learning, node, react
  
 ## Idea 3 :
 __Project Title :  Hate Content detector__
 
-__Description : __
+__Description :__
 
 This application would help to detect and report the malicious content.
 
