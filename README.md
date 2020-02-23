@@ -3,6 +3,7 @@
 # Idea 1 :
 
 Project Title : Sign language Interpreter
+
 Description :
 Communication with people having speaking and hearing  disability is difficult for others. Other people need to get special training in sign language to communicate. This application can help people to communicate with them without having prior knowledge of sign language. It will be helpful to both groups of people.
 
