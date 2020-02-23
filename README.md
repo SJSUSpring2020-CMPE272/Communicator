@@ -2,11 +2,14 @@
 
 # Idea 1 :
 Project Title : Sign language Interpreter
+
 Description : 
 Application will Translates signs to text and speech to help people who cannot speak to communicate with other people.
 In addition to that, application will also support speech to text conversion for people who doesnot have ability to hear.
+
 Goal : 
 To ease the communication with deaf and dumb people.
+
 Technologies : 
 Machine Learning using TensorFlow, OpenCV, IBM Watson text to speech, IBM watson speech to text, Python and React
  
