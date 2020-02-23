@@ -1,6 +1,6 @@
 # ProjectGroup-1
 
-# Idea 1 :
+## Idea 1 :
 
 __Project Title : Sign language Interpreter__
 
@@ -21,26 +21,30 @@ __Technologies :__
  - Python and React
 
  
-# Idea 2 :
-Project Title : Trip Advisor
+## Idea 2 :
+__Project Title : Trip Advisor__
 
-Description :
+__Description :__
 On scanning a photo of a place, this application would suggest the user for further places he can visit.
 
-Goal : 
+__Goal : __
+
 It helps you find places you would like to visit based on your previous search.
 
-Technologies : 
+__Technologies __
+
 Machine Learning, node, react
  
-# Idea 3 :
-Project Title :  Hate Content detector
+## Idea 3 :
+__Project Title :  Hate Content detector__
 
-Description : 
+___Description : __
+
 This application would help to detect and report the malicious content.
 
-Goal :
+__Goal :__
+
 In Today’s era when Social media has become an integral part of our society, it is important to make sure that improper content is reported and removed.
 
-Technologies :
+__Technologies :__
 Machine Learning, IBM 
