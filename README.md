@@ -1,17 +1,24 @@
 # ProjectGroup-1
 
 # Idea 1 :
+
 Project Title : Sign language Interpreter
+Description :
+Communication with people having speaking and hearing  disability is difficult for others. Other people need to get special training in sign language to communicate. This application can help people to communicate with them without having prior knowledge of sign language. It will be helpful to both groups of people.
 
-Description : 
-Application will Translates signs to text and speech to help people who cannot speak to communicate with other people.
-In addition to that, application will also support speech to text conversion for people who doesnot have ability to hear.
+This application will translate signs into text and speech to help people who cannot speak to communicate with other people. In addition to that, this application will also support speech to text conversion for people who don't have ability to hear.
 
-Goal : 
-To ease the communication with deaf and dumb people.
+Goal :
+ - To ease the communication with deaf and dumb people. 
+ - To enable more people to communicate with specially skilled people. 
 
-Technologies : 
-Machine Learning using TensorFlow, OpenCV, IBM Watson text to speech, IBM watson speech to text, Python and React
+Technologies :  
+ - Machine Learning using TensorFlow
+ - OpenCV
+ - IBM Watson text to speech
+ - IBM watson speech to text
+ - Python and React
+
  
 # Idea 2 :
 Project Title : Trip Advisor
