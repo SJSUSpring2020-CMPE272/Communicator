@@ -25,26 +25,40 @@ __Technologies :__
 __Project Title : Trip Advisor__
 
 __Description :__
-On scanning a photo of a place, this application would suggest the user for further places he can visit.
+When people visit a new place, they are mostly on a clock and not sure of which places to prioritize. The application would help the users not to miss out on their places of interest. Users can click or scan a picture of a place. And based on past visits and other users with the same interest, the application would predict other places of interest to the user.
+
+The application would be intuitive and  suggestions will include places in the same and nearby cities. The suggestions span from historical monuments to museums to eateries.
+
 
 __Goal :__
 
-It helps you find places you would like to visit based on your previous search.
+Facilitate the users, so places they like.
+
 
 __Technologies :__
 
-Machine Learning, node, react
+ - Machine Learning.
+ - Artificial Intelligence.
+ - Node Js and React
+
  
 ## Idea 3 :
 __Project Title :  Hate Content detector__
 
 __Description :__
 
-This application would help to detect and report the malicious content.
+Twitter’s mission is to give everyone the power to create and share ideas and information, and to express their opinions and beliefs without barriers. 
+
+Research has shown that some groups of people are disproportionately targeted with abuse online. To minimize this we will develop a tool which will recognize those content and report it.
+
+We will fetch the data from twitter streaming APIs and detect the hateful content . We will perform text sentiment analysis to detect the frequency of  words and provide visualization of gathered data.
+
 
 __Goal :__
 
-In Today’s era when Social media has become an integral part of our society, it is important to make sure that improper content is reported and removed.
+Social Media are sensors in the real world that can be used to measure the pulse of societies. It is a phenomenon that nowadays raises social alarms, especially when these messages contain hate speech targeted to a specific individual or group.
 
 __Technologies :__
-Machine Learning, IBM 
+ - Python
+ - Machine Learning
+ - IBM
