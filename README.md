@@ -1,7 +1,5 @@
 # ProjectGroup-1
 
-## Idea 1 :
-
 __Project Title : Sign language Interpreter__
 # Approved
 __Description :__
