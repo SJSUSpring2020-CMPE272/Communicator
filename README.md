@@ -21,3 +21,7 @@ __Technologies :__
  - IBM Watson text to speech
  - IBM watson speech to text
  - Python and React
+
+__System Architechute__
+
+![System](Flow_Diagram.jpg)
