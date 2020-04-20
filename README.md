@@ -6,7 +6,7 @@ Communication with people having speaking and hearing  disability is difficult f
 This application will translate signs into text and speech to help people who cannot speak to communicate with other people. In addition to that, this application will also support speech to text conversion for people who don't have ability to hear.
 
 This application can be useful at many places and personal use, e.g.
- - POS stations for order (Sign to speech for employee and speech to text for customer with hearing disability)
+ - POS stations for order (Sign to speech for employees and speech to text for customer with hearing disability)
  - Enquiry stations (Sign to speech for employee and speech to text for customer with hearing disability)
  - Ticket counters (Sign to speech for employee and speech to text for customer with hearing disability)
  - Attending any seminar or lecture (live Speech to Text for person with hearing disability)
