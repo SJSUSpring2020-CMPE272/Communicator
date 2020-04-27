@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import { Router, Switch, Route, Redirect } from "react-router";
 import { createBrowserHistory } from "history";
 import { connect } from "react-redux";
-import 'font-awesome/css/font-awesome.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
+import "font-awesome/css/font-awesome.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 import { startLogout } from "./firebase/auth";
 
 import Login from "./login";
@@ -14,6 +14,7 @@ import TextToSpeech from "./TextToSpeech";
 import SpeechToText from "./SpeechToText";
 
 import { logoutAction } from "./reducer/authReducer";
+import Webcam from "./webcam";
 // import './Main.css';
 
 export const history = createBrowserHistory();
@@ -27,20 +28,20 @@ export const fakeAuth = {
   signout(cb) {
     this.isAuthenticated = false;
     cb();
-  }
+  },
 };
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
+    render={(props) =>
       fakeAuth.isAuthenticated === true ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
             pathname: "/login",
-            state: { from: props.location }
+            state: { from: props.location },
           }}
         />
       )
@@ -108,8 +109,9 @@ class App extends Component {
             <div style={{ marginTop: "10px" }} />
             <Switch>
               <PrivateRoute path="/" component={TextToSpeech} exact={true} />
-              <Route path="/speech-to-text" component={SpeechToText} />
-              <Route path="/text-to-speech" component={TextToSpeech} />
+              <PrivateRoute path="/speech-to-text" component={SpeechToText} />
+              <PrivateRoute path="/text-to-speech" component={TextToSpeech} />
+              <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
             </Switch>
           </div>
@@ -119,20 +121,20 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logoutAction: () => {
       dispatch(logoutAction());
     },
     startLogout: () => {
       dispatch(startLogout());
-    }
+    },
   };
 };
 
