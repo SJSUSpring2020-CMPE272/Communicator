@@ -52,7 +52,6 @@ class App extends Component {
   componentDidMount() {}
 
   logOut = () => {
-    debugger;
     fakeAuth.signout(() => {
       // this.props.startLogout();
       this.props.logoutAction();

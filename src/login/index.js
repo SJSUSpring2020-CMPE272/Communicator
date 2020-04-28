@@ -11,10 +11,9 @@ class Login extends Component {
     password: "",
     usernameValidation: "",
     passwordValidation: "",
-    redirectToReferrer: false
+    redirectToReferrer: false,
   };
   GoogleLogin = () => {
-    debugger;
     this.props.startLogin();
   };
   componentDidMount() {
@@ -36,7 +35,7 @@ class Login extends Component {
     }
     return isFormValid;
   };
-  onEmailIdPasswordLogin = e => {
+  onEmailIdPasswordLogin = (e) => {
     e.preventDefault();
     const isFormValid = this.validateForm();
     if (isFormValid) {
@@ -76,10 +75,10 @@ class Login extends Component {
                     id="inputEmail"
                     placeholder="User Name"
                     name="username"
-                    onChange={e => {
+                    onChange={(e) => {
                       this.setState({
                         username: e.target.value,
-                        usernameValidation: false
+                        usernameValidation: false,
                       });
                     }}
                   />
@@ -101,10 +100,10 @@ class Login extends Component {
                     id="inputPassword"
                     placeholder="Password"
                     name="password"
-                    onChange={e => {
+                    onChange={(e) => {
                       this.setState({
                         password: e.target.value,
-                        passwordValidation: false
+                        passwordValidation: false,
                       });
                     }}
                   />
@@ -143,17 +142,17 @@ class Login extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    auth: state.auth,
   };
 };
-const mapDispatchToPops = dispatch => ({
+const mapDispatchToPops = (dispatch) => ({
   startLogin: () => {
     dispatch(startLogin());
   },
   sigininUserAuthProvider: (email, password) => {
     dispatch(sigininUserAuthProvider(email, password));
-  }
+  },
 });
 export default connect(mapStateToProps, mapDispatchToPops)(Login);

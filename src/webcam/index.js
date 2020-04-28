@@ -48,7 +48,7 @@ const WebcamCapture = () => {
           setToggleCam(!toggleCam);
         }}
       >
-        {toggleCam ? "Turn Off camera" : "Turn On Camera"}
+        Turn {toggleCam ? "Off" : "On"} camera
       </button>
     </>
   );

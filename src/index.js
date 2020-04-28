@@ -10,8 +10,6 @@ import { loginAction, logoutAction } from "./reducer/authReducer";
 import { firebase } from "./firebase/firebase";
 import * as serviceWorker from "./serviceWorker";
 
-
-
 let hasAppRendered = false;
 
 const Application = (
@@ -27,9 +25,8 @@ const renderApp = () => {
   }
 };
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    debugger;
     fakeAuth.authenticate(() => {
       store.dispatch(loginAction(user));
       // store.dispatch(getEvents());
@@ -40,7 +37,6 @@ firebase.auth().onAuthStateChanged(user => {
       console.log("logged in", user);
     });
   } else {
-    debugger;
     store.dispatch(logoutAction());
     history.push("/Login");
     renderApp();
