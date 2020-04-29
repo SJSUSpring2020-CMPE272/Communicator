@@ -26,6 +26,8 @@ current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+taking
 
 while current_train_samples_count>=take_train_samples and  current_test_samples_count>=take_test_samples:
     currentIndex=currentIndex+1
+    if currentIndex==len(trainWords):
+        break
     takingSamplesForWord=trainWords[currentIndex]
     current_train_samples_count=len(os.listdir("dataset/training_labeled_data/"+takingSamplesForWord))
     current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+takingSamplesForWord))
@@ -34,7 +36,7 @@ mode="train"
 if current_train_samples_count>=take_train_samples:
     mode="test"
 
-while True:
+while currentIndex<len(trainWords):
     _,rawFrame=cap.read()
     flippedFrame=cv2.flip(rawFrame,1)
 
@@ -79,6 +81,8 @@ while True:
             else:
                 while current_train_samples_count>=take_train_samples and  current_test_samples_count>=take_test_samples:
                     currentIndex=currentIndex+1
+                    if currentIndex==len(trainWords):
+                        break
                     takingSamplesForWord=trainWords[currentIndex]
                     current_train_samples_count=len(os.listdir("dataset/training_labeled_data/"+takingSamplesForWord))
                     current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+takingSamplesForWord))
@@ -90,6 +94,8 @@ while True:
             current_test_samples_count=current_test_samples_count+1
             while current_train_samples_count>=take_train_samples and  current_test_samples_count>=take_test_samples:
                     currentIndex=currentIndex+1
+                    if currentIndex==len(trainWords):
+                        break
                     takingSamplesForWord=trainWords[currentIndex]
                     current_train_samples_count=len(os.listdir("dataset/training_labeled_data/"+takingSamplesForWord))
                     current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+takingSamplesForWord))
@@ -103,6 +109,8 @@ while True:
         current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+takingSamplesForWord))
         while current_train_samples_count>=take_train_samples and  current_test_samples_count>=take_test_samples:
             currentIndex=currentIndex+1
+            if currentIndex==len(trainWords):
+                break
             takingSamplesForWord=trainWords[currentIndex]
             current_train_samples_count=len(os.listdir("dataset/training_labeled_data/"+takingSamplesForWord))
             current_test_samples_count=len(os.listdir("dataset/testing_labeled_data/"+takingSamplesForWord))
