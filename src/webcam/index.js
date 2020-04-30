@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import Webcam from "react-webcam";
 import "./index.css";
 const videoConstraints = {
@@ -9,8 +10,9 @@ const videoConstraints = {
 
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
-  let [imageSrc, setImageSrc] = React.useState(null);
-  let [toggleCam, setToggleCam] = React.useState(true);
+  const [imageSrc, setImageSrc] = React.useState(null);
+  const [toggleCam, setToggleCam] = React.useState(true);
+  const [result, setResult] = React.useState("");
 
   // useEffect(() => {
   //   let clear;
@@ -22,6 +24,7 @@ const WebcamCapture = () => {
   //     clearInterval(clear);
   //   };
   // });
+  
   // const setCanvas = () => {
   //   var img = document.getElementById("imdId");
   //   var canvas = document.getElementById("myCanvas");
@@ -35,10 +38,25 @@ const WebcamCapture = () => {
   // context.strokeStyle = "black";
   // context.stroke();
   // };
+  function predict(image) {
+    axios
+      .post("http://localhost:5000/predict", { image_txt: image })
+      .then((response) => {
+        response.data =
+          document.getElementById("result").value + " " + response.data;
+        response.data.trim();
+        setResult(response.data);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  }
+
   const capture = React.useCallback(() => {
     const image = webcamRef.current.getScreenshot();
     console.log(image);
     setImageSrc(image);
+    predict(image);
   }, [webcamRef]);
 
   return (
@@ -59,11 +77,19 @@ const WebcamCapture = () => {
           <div className="camera-border"></div>
         </>
       )}
-
-      <img src={imageSrc} alt="Something" id={"imdId"} />
+      <input
+        type="text"
+        value={result}
+        name="result"
+        id="result"
+        onChange={(e) => {
+          setResult(e.target.value);
+        }}
+      />
+      {/* <img src={imageSrc} alt="Something" id={"imdId"} /> */}
 
       {/* <canvas id="myCanvas" width="500" height="500" /> */}
-      <button onClick={capture}>Capture photo</button>
+      {toggleCam && <button onClick={capture}>Capture photo</button>}
       <button
         onClick={() => {
           setToggleCam(!toggleCam);
