@@ -77,7 +77,7 @@ const WebcamCapture = () => {
           <div className="camera-border"></div>
         </>
       )}
-      <input
+      <textarea
         type="text"
         value={result}
         name="result"
