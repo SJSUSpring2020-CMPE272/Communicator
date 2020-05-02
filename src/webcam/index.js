@@ -57,7 +57,7 @@ const WebcamCapture = () => {
   }, [webcamRef]);
 
   return (
-    <>
+    <div >
       <h1>SIGN LANGUAGE INTERPRETER</h1>
       <div className="row">
         {toggleCam && (
@@ -165,7 +165,7 @@ const WebcamCapture = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

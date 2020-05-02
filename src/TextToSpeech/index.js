@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Node_API_URL} from '../Constants'
+import { Node_API_URL } from "../Constants";
 const voices = [
   {
     name: "en-US_MichaelV3Voice",
@@ -11,9 +11,9 @@ const voices = [
       "https://stream.watsonplatform.net/text-to-speech/api/v1/voices/en-US_MichaelV3Voice",
     supported_features: {
       voice_transformation: false,
-      custom_pronunciation: true
+      custom_pronunciation: true,
     },
-    description: "Michael: American English male voice. Dnn technology."
+    description: "Michael: American English male voice. Dnn technology.",
   },
   {
     name: "en-US_AllisonV3Voice",
@@ -25,10 +25,10 @@ const voices = [
       "https://stream.watsonplatform.net/text-to-speech/api/v1/voices/en-US_AllisonV3Voice",
     supported_features: {
       voice_transformation: false,
-      custom_pronunciation: true
+      custom_pronunciation: true,
     },
-    description: "Allison: American English female voice. Dnn technology."
-  }
+    description: "Allison: American English female voice. Dnn technology.",
+  },
 ];
 export default class TextToSpeech extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class TextToSpeech extends Component {
     this.state = {
       voice: voices[1], // Allison v3 is the first voice
       error: null, // the error from calling /classify
-      text: "Mal" // default text
+      text: "Mal", // default text
     };
     this.audioElementRef = React.createRef();
   }
@@ -65,13 +65,13 @@ export default class TextToSpeech extends Component {
   onAudioLoaded = () => {
     this.setState({ hasAudio: true });
   };
-  textChange = e => {
+  textChange = (e) => {
     this.setState({ text: e.target.value });
   };
   onTextChange(event) {
     this.setState({ text: event.target.value });
   }
-  speak = e => {
+  speak = (e) => {
     const { text } = this.state;
 
     const audio = this.audioElementRef.current;
@@ -84,19 +84,35 @@ export default class TextToSpeech extends Component {
   render() {
     const { text, hasAudio } = this.state;
     return (
-      <div>
-        <h2>Text To Speech</h2>
-        <input name="text" value={text} onChange={this.textChange} />
-        <button onClick={this.speak}>To Speech</button>
-        <audio
-          ref={this.audioElementRef}
-          autoPlay
-          id="audio"
-          className={`audio ${hasAudio ? "" : "hidden"}`}
-          controls="controls"
-        >
-          Your browser does not support the audio element.
-        </audio>
+      <div className='container'>
+        <h1>Text To Speech</h1>
+        <div className="row">
+          <div className="col-sm-8">
+            <textarea name="text" value={text} onChange={this.textChange} />
+          </div>
+
+          <div className="col-sm-4">
+            <div className="row">
+              <div className="col-sm-12">
+                <button onClick={this.speak} className="webcam-controls" style={{marginBottom:'50px'}}>
+                  <i class="fa fa-volume-up fa-2x icons"></i>
+                  To Speech
+                </button>
+              </div>
+              <div className="col-sm-12">
+                <audio
+                  ref={this.audioElementRef}
+                  autoPlay
+                  id="audio"
+                  className={`audio ${hasAudio ? "" : "hidden"}`}
+                  controls="controls"
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
