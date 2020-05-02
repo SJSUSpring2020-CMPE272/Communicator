@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
 
 const config = {
-    apiKey: "AIzaSyA_KnGM10sRT9B9DV8UrkQEwHl3eUFcRvU",
+    apiKey: "AIzaSyD8QN51LutpvADKbxwFDdmW25fZLwebS3I",
     authDomain: "cmpe-272-sign-to-speech.firebaseapp.com",
     databaseURL: "https://cmpe-272-sign-to-speech.firebaseio.com",
     projectId: "cmpe-272-sign-to-speech",
