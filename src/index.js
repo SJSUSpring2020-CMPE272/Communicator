@@ -3,13 +3,12 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-
 import { history, fakeAuth } from "./App";
 import store from "./reducer/store";
 import { loginAction, logoutAction } from "./reducer/authReducer";
 import { firebase } from "./firebase/firebase";
 import * as serviceWorker from "./serviceWorker";
-
+import 'font-awesome/css/font-awesome.min.css';
 let hasAppRendered = false;
 
 const Application = (

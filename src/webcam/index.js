@@ -10,6 +10,7 @@ const videoConstraints = {
 
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
+  const audioElementRef = React.useRef(null);
   const [imageSrc, setImageSrc] = React.useState(null);
   const [toggleCam, setToggleCam] = React.useState(true);
   const [result, setResult] = React.useState("");
@@ -24,20 +25,15 @@ const WebcamCapture = () => {
   //     clearInterval(clear);
   //   };
   // });
-  
-  // const setCanvas = () => {
-  //   var img = document.getElementById("imdId");
-  //   var canvas = document.getElementById("myCanvas");
-  //   var context = canvas.getContext("2d");
-  // context.drawImage(img,300,300,400,500, 400, 400,100,100);
-  // context.beginPath();
-  // context.rect(188, 50, 200, 100);
-  // context.fillStyle = "yellow";
-  // context.fill();
-  // context.lineWidth = 7;
-  // context.strokeStyle = "black";
-  // context.stroke();
-  // };
+
+  const speak = e => {
+    const audio = audioElementRef.current;
+    audio.setAttribute("type", "audio/ogg;codecs=opus");
+    audio.setAttribute(
+      "src",
+      `http://localhost:3001/api/v1/synthesize?text=${result}&voice=en-US_AllisonV3Voice&download=true&accept=audio%2Fmp3`
+    );
+  };
   function predict(image) {
     axios
       .post("http://localhost:5000/predict", { image_txt: image })
@@ -89,14 +85,52 @@ const WebcamCapture = () => {
       {/* <img src={imageSrc} alt="Something" id={"imdId"} /> */}
 
       {/* <canvas id="myCanvas" width="500" height="500" /> */}
-      {toggleCam && <button onClick={capture}>Capture photo</button>}
-      <button
+
+      {toggleCam && (
+        <i
+          className="fa fa-camera fa-2x icons"
+          onClick={capture}
+          title="Capture Sign"
+        ></i>
+      )}
+
+      {/* <button
         onClick={() => {
           setToggleCam(!toggleCam);
         }}
       >
         Turn {toggleCam ? "Off" : "On"} camera
-      </button>
+      </button> */}
+      {toggleCam ? (
+        <span
+          class="fa-stack fa-lg icons"
+          onClick={() => {
+            setToggleCam(!toggleCam);
+          }}
+        >
+          <i className="fa fa-video-camera fa-stack-1x"></i>
+          <i class="fa fa-ban fa-stack-2x" title="Turn off camera"></i>
+        </span>
+      ) : (
+        <i
+          className="fa fa-video-camera fa-2x icons"
+          title="Turn on camera"
+          onClick={() => {
+            setToggleCam(!toggleCam);
+          }}
+        ></i>
+      )}
+
+      {result && <i class="fa fa-volume-up fa-2x icons" onClick={speak}></i>}
+      <audio
+          ref={audioElementRef}
+          autoPlay
+          id="audio"
+          className={`audio`}
+          controls="controls"
+        >
+          Your browser does not support the audio element.
+        </audio>
     </>
   );
 };

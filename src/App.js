@@ -67,7 +67,7 @@ class App extends Component {
           <div>
             {this.props.auth && this.props.auth.uid && (
               <nav className="navbar navbar-default">
-                <div className="container-fluid">
+                <div className="container-fluids">
                   <div
                     className="navbar-header"
                     onClick={() => {
@@ -80,7 +80,7 @@ class App extends Component {
                   </div>
                   <ul className="nav navbar-nav">
                     <li
-                      className="active"
+                      className="navigation-item"
                       onClick={() => {
                         history.push(`/text-to-speech`);
                       }}
@@ -88,6 +88,7 @@ class App extends Component {
                       <a href="#">Text To Speech</a>
                     </li>
                     <li
+                    className="navigation-item"
                       onClick={() => {
                         history.push(`/speech-to-text`);
                       }}
@@ -107,7 +108,7 @@ class App extends Component {
             )}
             <div style={{ marginTop: "10px" }} />
             <Switch>
-              <PrivateRoute path="/" component={TextToSpeech} exact={true} />
+              <PrivateRoute path="/" component={Webcam} exact={true} />
               <PrivateRoute path="/speech-to-text" component={SpeechToText} />
               <PrivateRoute path="/text-to-speech" component={TextToSpeech} />
               <Route path="/webcam" component={Webcam} exact={true} />
