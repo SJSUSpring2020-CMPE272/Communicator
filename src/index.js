@@ -7,7 +7,7 @@ import { history, fakeAuth } from "./App";
 import store from "./reducer/store";
 import { loginAction, logoutAction } from "./reducer/authReducer";
 import { firebase } from "./firebase/firebase";
-// import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "./serviceWorker";
 import 'font-awesome/css/font-awesome.min.css';
 let hasAppRendered = false;
 
@@ -46,4 +46,4 @@ firebase.auth().onAuthStateChanged((user) => {
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-// serviceWorker.unregister();
+serviceWorker.unregister();
