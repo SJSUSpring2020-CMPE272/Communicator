@@ -10,17 +10,21 @@ This application can be useful at many places and personal use, e.g.
  - Enquiry stations (Sign to speech for employee and speech to text for customer with hearing disability)
  - Ticket counters (Sign to speech for employee and speech to text for customer with hearing disability)
  - Attending any seminar or lecture (live Speech to Text for person with hearing disability)
+ - Bank teller desk(Sign to speech for employee and speech to text for customer with hearing disability)
  
 __Goal :__
  - To ease the communication with deaf and dumb people. 
  - To enable more people to communicate with differently abled people. 
 
 __Technologies :__
- - Machine Learning using TensorFlow
+ - Machine Learning using TensorFlow and Keras
  - OpenCV
  - IBM Watson text to speech
  - IBM watson speech to text
- - Python and React
+ - Python, Flask
+ - Node.js, Express
+ - React, Redux
+ - Google firebase authentication
 
 __System Architecture__
 
