@@ -27,7 +27,7 @@
     "watson-speech": "^0.38.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "npm build & node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
