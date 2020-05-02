@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Node_API_URL} from '../Constants'
 const voices = [
   {
     name: "en-US_MichaelV3Voice",
@@ -77,7 +78,7 @@ export default class TextToSpeech extends Component {
     audio.setAttribute("type", "audio/ogg;codecs=opus");
     audio.setAttribute(
       "src",
-      `http://localhost:3001/api/v1/synthesize?text=${text}&voice=en-US_AllisonV3Voice&download=true&accept=audio%2Fmp3`
+      `${Node_API_URL}api/v1/synthesize?text=${text}&voice=en-US_AllisonV3Voice&download=true&accept=audio%2Fmp3`
     );
   };
   render() {

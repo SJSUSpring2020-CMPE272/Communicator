@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
+import {Node_API_URL} from '../Constants'
 import recognizeMicrophone from "watson-speech/speech-to-text/recognize-microphone";
 export default class SpeechToText extends Component {
   state = {};
   onClickButton = () => {
-    fetch("http://localhost:3001/api/v1/credentials")
+    fetch(Node_API_URL+"api/v1/credentials")
       .then((response) => {
         return response.text();
       })
