@@ -5,16 +5,13 @@ Communication with people having speaking and hearing  disability is difficult f
 
 This application will translate signs into text and speech to help people who cannot speak to communicate with other people. In addition to that, this application will also support speech to text conversion for people who don't have ability to hear.
 
-This application can be useful at many places and personal use, e.g.
- - POS stations for order (Sign to speech for employees and speech to text for customer with hearing disability)
- - Enquiry stations (Sign to speech for employee and speech to text for customer with hearing disability)
- - Ticket counters (Sign to speech for employee and speech to text for customer with hearing disability)
- - Attending any seminar or lecture (live Speech to Text for person with hearing disability)
- - Bank teller desk(Sign to speech for employee and speech to text for customer with hearing disability)
- 
-__Goal :__
+ __Goal :__
  - To ease the communication with deaf and dumb people. 
  - To enable more people to communicate with differently abled people. 
+
+__System Architecture__
+
+![System](Flow_Diagram.jpg)
 
 __Technologies :__
  - Machine Learning using TensorFlow and Keras
@@ -25,7 +22,11 @@ __Technologies :__
  - Node.js, Express
  - React, Redux
  - Google firebase authentication
-
-__System Architecture__
-
-![System](Flow_Diagram.jpg)
+  
+ __Use cases :__
+This application can be useful at many places and personal use, e.g.
+ - POS stations for order (Sign to speech for employees and speech to text for customer with hearing disability)
+ - Enquiry stations (Sign to speech for employee and speech to text for customer with hearing disability)
+ - Ticket counters (Sign to speech for employee and speech to text for customer with hearing disability)
+ - Attending any seminar or lecture (live Speech to Text for person with hearing disability)
+ - Bank teller desk(Sign to speech for employee and speech to text for customer with hearing disability)
