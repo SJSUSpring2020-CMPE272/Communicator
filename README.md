@@ -24,6 +24,7 @@ __Technologies :__
  - Google firebase authentication
   
  __Use cases :__
+  
 This application can be useful at many places and personal use, e.g.
  - POS stations for order (Sign to speech for employees and speech to text for customer with hearing disability)
  - Enquiry stations (Sign to speech for employee and speech to text for customer with hearing disability)
