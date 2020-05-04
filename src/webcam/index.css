@@ -20,3 +20,16 @@ textarea{
 .audio{
   width: 100%;
 }
+
+.row{
+  margin-top : 20px;
+  margin-bottom : 10px;
+}
+
+.dataCard{
+  box-shadow : 4px 4px 13px 2px;
+  margin : 20px;
+  padding : 20px;
+  border-radius : 4px;
+  background-color: #ffffff;
+}

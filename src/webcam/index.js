@@ -60,108 +60,114 @@ const WebcamCapture = () => {
     <div >
       <h1>SIGN LANGUAGE INTERPRETER</h1>
       <div className="row">
-        {toggleCam && (
-          <div className="col">
-            <Webcam
-              audio={false}
-              height={338}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              width={600}
-              forceScreenshotSourceSize={true}
-              videoConstraints={videoConstraints}
-              mirrored={true}
-            />
-            <div className="camera-border"></div>
-          </div>
-        )}
-        {/* <img src={imageSrc} alt="Something" id={"imdId"} /> */}
+        <div className="col-md-6">
+          <div className="dataCard">
+            <div className="row">
+              <div className="col-md-6">
+                {toggleCam && (
+                  <button onClick={capture} className="webcam-controls" autoFocus>
+                    <span className="fa-stack fa-lg icons">
+                      <i
+                        className="fa fa-camera fa-2x icons"
+                        title="Capture Sign"
+                      ></i>
+                    </span>{" "}
+                    Capture Sign
+                  </button>
+                )}
 
-        {/* <canvas id="myCanvas" width="500" height="500" /> */}
-        <div className="col">
-          <div className="row">
-            <div className="col">
-              {toggleCam && (
-                <button onClick={capture} className="webcam-controls">
-                  <span className="fa-stack fa-lg icons">
-                    <i
-                      className="fa fa-camera fa-2x icons"
-                      title="Capture Sign"
-                    ></i>
-                  </span>{" "}
-                  Capture Sign
-                </button>
-              )}
-            </div>
-            <div className="col">
-              {toggleCam ? (
-                <button
-                  onClick={() => {
-                    setToggleCam(!toggleCam);
-                  }}
-                  className="webcam-controls"
-                >
-                  <span class="fa-stack fa-lg icons">
-                    <i className="fa fa-video-camera fa-stack-1x"></i>
-                    <i
-                      class="fa fa-ban fa-stack-2x"
-                      title="Turn off camera"
-                    ></i>
-                  </span>{" "}
-                  Turn off camera
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    setToggleCam(!toggleCam);
-                  }}
-                  className="webcam-controls"
-                >
-                  <i
-                    className="fa fa-video-camera fa-2x icons"
-                    title="Turn on camera"
+              </div>
+
+              <div className="col-md-6">
+                {toggleCam ? (
+                  <button
                     onClick={() => {
                       setToggleCam(!toggleCam);
                     }}
-                  ></i>{" "}
+                    className="webcam-controls"
+                  >
+                    <span class="fa-stack fa-lg icons">
+                      <i className="fa fa-video-camera fa-stack-1x"></i>
+                      <i
+                        class="fa fa-ban fa-stack-2x"
+                        title="Turn off camera"
+                      ></i>
+                    </span>{" "}
+                  Turn off camera
+                  </button>
+                ) : (
+                    <button
+                      onClick={() => {
+                        setToggleCam(!toggleCam);
+                      }}
+                      className="webcam-controls"
+                    >
+                      <i
+                        className="fa fa-video-camera fa-2x icons"
+                        title="Turn on camera"
+                        onClick={() => {
+                          setToggleCam(!toggleCam);
+                        }}
+                      ></i>{" "}
                   Turn on camera
-                </button>
-              )}
+                    </button>
+                  )}
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <textarea
-                type="text"
-                value={result}
-                name="result"
-                id="result"
-                onChange={(e) => {
-                  setResult(e.target.value);
-                }}
-              />
+            <div className="row">
+              <div className="col-md-12">
+                <textarea
+                  type="text"
+                  value={result}
+                  name="result"
+                  id="result"
+                  onChange={(e) => {
+                    setResult(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              {result && (
-                <button className="webcam-controls" onClick={speak}>
-                  <i class="fa fa-volume-up fa-2x icons"></i>
+            <div className="row">
+              <div className="col-md-6">
+                {result && (
+                  <button className="webcam-controls" onClick={speak}>
+                    <i class="fa fa-volume-up fa-2x icons"></i>
                   Speak
-                </button>
-              )}
+                  </button>
+                )}
+              </div>
+              <div className="col-md-6">
+                {result && (<audio
+                  ref={audioElementRef}
+                  autoPlay
+                  id="audio"
+                  className={`audio`}
+                  controls="controls"
+                >
+                  Your browser does not support the audio element.
+                </audio>)}
+              </div>
             </div>
-            <div className="col">
-              <audio
-                ref={audioElementRef}
-                autoPlay
-                id="audio"
-                className={`audio`}
-                controls="controls"
-              >
-                Your browser does not support the audio element.
-              </audio>
-            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="dataCard">
+            {toggleCam && (
+              <div className="col">
+                <Webcam
+                  audio={false}
+                  height={338}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  width={600}
+                  forceScreenshotSourceSize={true}
+                  videoConstraints={videoConstraints}
+                  mirrored={true}
+                />
+                <div className="camera-border"></div>
+              </div>
+            )}
+
           </div>
         </div>
       </div>

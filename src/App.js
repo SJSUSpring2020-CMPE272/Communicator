@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router history={history}>
-          <div>
+          <div className="main">
             {this.props.auth && this.props.auth.uid && (
               <nav className="navbar navbar-default">
                 <div className="container-fluids">
