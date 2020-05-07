@@ -10,7 +10,7 @@ ul.navbar-nav{
 }
 .navigation-item {
   display: inline-block;
-  margin: 5px;
+  /* margin: 5px; */
   text-align: left;
 }
 .container-fluids{
@@ -21,7 +21,7 @@ ul.navbar-nav{
 .navbar-right{
   position: fixed;
   right:15px;
-  top:15px
+  top:0px
 }
 .col{
 margin: 15px;

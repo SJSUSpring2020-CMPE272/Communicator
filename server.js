@@ -94,6 +94,14 @@ app.get('/api/v1/credentials', async (req, res, next) => {
   }
 });
 //Speech to Text API block ends
+
+
+//Host react application on root url
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
+});
+
+
 //Run application 
 const port = process.env.PORT || 3001;
 

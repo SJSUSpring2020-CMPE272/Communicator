@@ -15,6 +15,7 @@ import SpeechToText from "./SpeechToText";
 
 import { logoutAction } from "./reducer/authReducer";
 import Webcam from "./webcam";
+import ZoomCC from './ZoomCC';
 // import './Main.css';
 
 export const history = createBrowserHistory();
@@ -69,38 +70,53 @@ class App extends Component {
               <nav className="navbar navbar-default">
                 <div className="container-fluids">
                   <div
-                    className="navbar-header"
+                    className="navbar-header cursor"
                     onClick={() => {
                       history.push("/");
                     }}
                   >
-                    <a className="navbar-brand" href="#">
+                    {/* <a className="navbar-brand" href="#"> */}
                       Home
-                    </a>
+                    {/* </a> */}
                   </div>
                   <ul className="nav navbar-nav">
                     <li
-                      className="navigation-item"
+                      className="navigation-item cursor"
                       onClick={() => {
                         history.push(`/text-to-speech`);
                       }}
                     >
-                      <a href="#">Text To Speech</a>
+                      {/* <a href="#"> */}
+                        Text To Speech
+                        {/* </a> */}
                     </li>
                     <li
-                    className="navigation-item"
+                    className="navigation-item cursor"
                       onClick={() => {
                         history.push(`/speech-to-text`);
                       }}
                     >
-                      <a href="#">Speech To Text</a>
+                      {/* <a href="#"> */}
+                        Speech To Text
+                        {/* </a> */}
+                    </li>
+                    <li
+                    className="navigation-item cursor"
+                      onClick={() => {
+                        history.push(`/zoom-cc`);
+                      }}
+                    >
+                      {/* <a href="#"> */}
+                        Zoom CC
+                        {/* </a> */}
                     </li>
                   </ul>
                   <ul className="nav navbar-nav navbar-right">
-                    <li onClick={this.logOut}>
-                      <a href="#">
-                        <span className="glyphicon glyphicon-log-in" /> Logout
-                      </a>
+                    <li onClick={this.logOut} className='cursor'>
+                      {/* <a href="#"> */}
+                        {/* <span className="glyphicon glyphicon-log-in" /> */}
+                         Logout
+                      {/* </a> */}
                     </li>
                   </ul>
                 </div>
@@ -111,6 +127,7 @@ class App extends Component {
               <PrivateRoute path="/" component={Webcam} exact={true} />
               <PrivateRoute path="/speech-to-text" component={SpeechToText} />
               <PrivateRoute path="/text-to-speech" component={TextToSpeech} />
+              <PrivateRoute path="/zoom-cc" component={ZoomCC} />
               <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
             </Switch>

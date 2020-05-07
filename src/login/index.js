@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 import { startLogin, sigininUserAuthProvider } from "../firebase/auth";
+import LoginButtonPng from "../btn_google_signin_light_normal_web.png";
 
 import "./index.css";
 class Login extends Component {
@@ -59,11 +60,11 @@ class Login extends Component {
         <div className="container">
           <div className="login-form">
             <div className="main-div">
-              <div className="panel">
-                <h2>Admin Login</h2>
-                <p>Please enter your email and password</p>
-              </div>
-              <form id="Login" onSubmit={this.onEmailIdPasswordLogin}>
+              {/* <div className="panel">
+                <h2>Login</h2>
+            
+              </div> */}
+              {/* <form id="Login" onSubmit={this.onEmailIdPasswordLogin}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -117,14 +118,20 @@ class Login extends Component {
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
-              </form>
-              <button
+              </form>*/}
+              {/* <button 
                 type="button"
-                className="btn btn-secondary"
+                className="btn-primary"
+                
+              > */}
+              <img
+                src={LoginButtonPng}
+                alt="google login button"
                 onClick={this.GoogleLogin}
-              >
-                Google Login
-              </button>
+                className="cursor"
+                title="Sign in with Google Account"
+              />
+              {/* </button> */}
             </div>
           </div>
         </div>

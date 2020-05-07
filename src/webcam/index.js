@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Node_API_URL, Python_API_URL } from "../Constants";
 import axios from "axios";
 import Webcam from "react-webcam";
+import CameraOff from '../video-not-working.png'
 import "./index.css";
 const videoConstraints = {
   width: 1280,
@@ -152,7 +153,7 @@ const WebcamCapture = () => {
         </div>
         <div className="col-md-6">
           <div className="dataCard">
-            {toggleCam && (
+            {toggleCam ? (
               <div className="col">
                 <Webcam
                   audio={false}
@@ -166,7 +167,7 @@ const WebcamCapture = () => {
                 />
                 <div className="camera-border"></div>
               </div>
-            )}
+            ):<img src={CameraOff}/>}
 
           </div>
         </div>
