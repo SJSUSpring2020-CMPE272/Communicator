@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Node_API_URL } from "../Constants";
 import recognizeMicrophone from "watson-speech/speech-to-text/recognize-microphone";
 import Axios from "axios";
-import Modal from '../Modal';
-import DemoVideo from '../zoom-cc-demo.mov'
+import Modal from "../Modal";
+import DemoVideo from "../zoom-cc-demo.mov";
+import './index.scss';
+
 export default class SpeechToText extends Component {
   state = {
     seq: 1,
@@ -13,19 +15,21 @@ export default class SpeechToText extends Component {
     meetingName: "",
     posted_cc: [],
     formattedMessages: [],
-    open:true,
+    open: true,
   };
-  closeModal=()=>{
-    this.setState({open:false})
+  componentDidMount() {
+    setTimeout(this.closeModal, 30000);
   }
+  closeModal = () => {
+    this.setState({ open: false });
+  };
   sendCC = () => {
     const { seq, meetingUrl } = this.state;
     let messages = this.getFinalAndLatestInterimResult();
-    console.log('before messages',messages);
+    console.log("before messages", messages);
     if (messages.length > seq) {
-    
       let message = messages[seq - 1];
-      console.log('after messages',message);
+      console.log("after messages", message);
       let text = message.alternatives[0].transcript;
       Axios.post(`${meetingUrl}&seq=${seq}`, text, {
         headers: {
@@ -33,10 +37,14 @@ export default class SpeechToText extends Component {
         },
       })
         .then((response) => {
-          this.setState({ seq: this.state.seq + 1 });
+          let { posted_cc } = this.state;
+          posted_cc.push({ time: response.data, text });
+          this.setState({ seq: this.state.seq + 1, posted_cc });
         })
         .catch((e) => {
-          this.setState({ seq: this.state.seq + 1 });
+          let { posted_cc } = this.state;
+          posted_cc.push({ time: null, text });
+          this.setState({ seq: this.state.seq + 1, posted_cc });
         });
     }
   };
@@ -142,88 +150,116 @@ export default class SpeechToText extends Component {
     return final;
   };
   render() {
-    const { meetingUrl, isSet, meetingName, listening,open } = this.state;
+    const {
+      meetingUrl,
+      isSet,
+      meetingName,
+      listening,
+      open,
+      posted_cc,
+    } = this.state;
     return (
       <div className="container">
         <h1>
           Live zoom closed captioning{" "}
           {isSet && meetingName && `for meeting ${meetingName}`}
         </h1>
-        {!isSet ? (
-          <form onSubmit={this.setMeetingUrl}>
-            <input
-              type="text"
-              name="meeting-name"
-              placeholder="Enter meeting name (optional)"
-              value={meetingName}
-              onChange={(e) => {
-                this.setState({ meetingName: e.target.value });
-              }}
-              style={{ width: "100%", marginBottom: "5px" }}
-            />
-            <textarea
-              // type="text"
-              name="meetingUrl"
-              value={meetingUrl}
-              placeholder={"Enter API token from Zoom"}
-              className="meetingUrl-textarea"
-              onChange={(e) => {
-                this.setState({ meetingUrl: e.target.value });
-              }}
-              required
-            />
-            <button type="submit" className="webcam-controls">
-              <i className="fa fa-save  fa-2x icons"></i>
-              Save API token
-            </button>
-          </form>
-        ) : (
-          <>
-            <button
-              onClick={() => {
-                this.stopTranscription();
-                this.setState({
-                  meetingUrl: "",
-                  meetingName: "",
-                  formattedMessages:[],
-                  isSet: false,
-                  seq: 1,
-                });
-              }}
-              className="webcam-controls"
-              style={{ marginBottom: "5px" }}
-            >
-              <i className="fa fa-gear  fa-2x icons"></i>
-              Change API token
-            </button>
-            <br />
-            {!listening && (
-              <button
-                id="button"
-                onClick={this.onClickButton}
-                className="webcam-controls"
-              >
-                <i className="fa fa-microphone  fa-2x icons"></i> Listen To
-                Microphone for live CC
-              </button>
-            )}
+        <div className="row">
+          <div className="col-md-5 dataCard">
+            {!isSet ? (
+              <form onSubmit={this.setMeetingUrl}>
+                <input
+                  type="text"
+                  name="meeting-name"
+                  placeholder="Enter meeting name (optional)"
+                  value={meetingName}
+                  onChange={(e) => {
+                    this.setState({ meetingName: e.target.value });
+                  }}
+                  style={{ width: "100%", marginBottom: "5px" }}
+                />
+                <textarea
+                  // type="text"
+                  name="meetingUrl"
+                  value={meetingUrl}
+                  placeholder={"Enter API token from Zoom"}
+                  className="meetingUrl-textarea"
+                  onChange={(e) => {
+                    this.setState({ meetingUrl: e.target.value });
+                  }}
+                  required
+                />
+                <button type="submit" className="webcam-controls">
+                  <i className="fa fa-save  fa-2x icons"></i>
+                  Save API token
+                </button>
+              </form>
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    this.stopTranscription();
+                    this.setState({
+                      meetingUrl: "",
+                      meetingName: "",
+                      formattedMessages: [],
+                      posted_cc: [],
+                      isSet: false,
+                      seq: 1,
+                    });
+                  }}
+                  className="webcam-controls"
+                  style={{ marginBottom: "5px" }}
+                >
+                  <i className="fa fa-gear  fa-2x icons"></i>
+                  Change API token
+                </button>
+                <br />
+                {!listening && (
+                  <button
+                    id="button"
+                    onClick={this.onClickButton}
+                    className="webcam-controls"
+                  >
+                    <i className="fa fa-microphone  fa-2x icons"></i> Listen To
+                    Microphone for live CC
+                  </button>
+                )}
 
-            <button
-              id="stop"
-              onClick={this.stopTranscription}
-              className={`webcam-controls ${listening ? "visible" : "hide"}`}
+                <button
+                  id="stop"
+                  onClick={this.stopTranscription}
+                  className={`webcam-controls ${
+                    listening ? "visible" : "hide"
+                  }`}
+                >
+                  <i className="fa fa-stop  fa-2x icons"></i>Stop Broadcasting
+                  live CC
+                </button>
+              </>
+            )}
+          </div>
+          <div className="col-md-5 dataCard">
+            <h3>Posted Captions</h3>
+            <hr />
+            <div
+              className="posted-cc-div"
+              style={{ maxHeight: "500px", overflowY: "auto" }}
             >
-              <i className="fa fa-stop  fa-2x icons"></i>Stop Broadcasting live
-              CC
-            </button>
-          </>
-        )}
-<Modal open={open} closeHandler={this.closeModal} >
-  <div className='container' style={{textAlign:'center'}}>
-  <video src={DemoVideo}  width={950} autoPlay/>
-  </div>
-</Modal>
-        {/* <div className="App-Text">{this.state.text}</div> */}
+              {posted_cc.map((item) => (
+                <div className="row">
+                  {/* <div className="col-4">{item.time}</div> */}
+                  <div className="col">{item.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Modal open={open} closeHandler={this.closeModal}>
+          <div className="container" style={{ textAlign: "center" }}>
+            <video src={DemoVideo} width={950} autoPlay />
+          </div>
+        </Modal>
       </div>
     );
   }

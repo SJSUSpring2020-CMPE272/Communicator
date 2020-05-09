@@ -5,6 +5,7 @@ div#LoginForm {
     background-position: center;
     background-size: cover;
     padding: 10px;
+    // text-align: right;
   }
   
   .form-heading {
@@ -95,3 +96,15 @@ div#LoginForm {
     color: greenyellow;
   }
   
+
+  .google-login-btn{
+    padding: 0px;
+    border: none;
+    &:hover{
+      border: solid 1px grey;
+    }
+    &:focus{
+      border: solid 1px grey;
+    }
+
+  }

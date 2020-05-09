@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 import { startLogin, sigininUserAuthProvider } from "../firebase/auth";
 import LoginButtonPng from "../btn_google_signin_light_normal_web.png";
 
-import "./index.css";
+import "./index.scss";
 class Login extends Component {
   state = {
     username: "",
@@ -60,11 +60,10 @@ class Login extends Component {
         <div className="container">
           <div className="login-form">
             <div className="main-div">
-              {/* <div className="panel">
+              <div className="panel">
                 <h2>Login</h2>
-            
-              </div> */}
-              {/* <form id="Login" onSubmit={this.onEmailIdPasswordLogin}>
+              </div>
+              <form id="Login" onSubmit={this.onEmailIdPasswordLogin}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -118,20 +117,20 @@ class Login extends Component {
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
-              </form>*/}
-              {/* <button 
-                type="button"
-                className="btn-primary"
-                
-              > */}
-              <img
-                src={LoginButtonPng}
-                alt="google login button"
+              </form>
+
+              <button
                 onClick={this.GoogleLogin}
-                className="cursor"
-                title="Sign in with Google Account"
-              />
-              {/* </button> */}
+                autoFocus
+                className="google-login-btn"
+              >
+                <img
+                  src={LoginButtonPng}
+                  alt="google login button"
+                  className="cursor"
+                  title="Sign in with Google Account"
+                />
+              </button>
             </div>
           </div>
         </div>
