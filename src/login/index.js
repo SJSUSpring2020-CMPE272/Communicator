@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 
 import { startLogin, sigininUserAuthProvider } from "../firebase/auth";
 import LoginButtonPng from "../btn_google_signin_light_normal_web.png";
-
+import Backgroundimage from '../images.jpg'
 import "./index.scss";
 class Login extends Component {
 
@@ -76,9 +76,15 @@ class Login extends Component {
      return  <Redirect to='/defaultHome' />
     }
     return (
-      <div id="LoginForm">
-       
-        <div className="container">
+      <div className="container">
+        <div className="row" style={{backgroundColor : "lightgray"}}>
+          <div className="col-md-8">
+              <div class="img-wrap">
+                <img src={Backgroundimage}/>
+             </div>
+          </div>
+          <div className="col-md-4">
+          <div  id="LoginForm">
           <div className="login-form">
             <div className="main-div">
               <div className="panel">
@@ -158,6 +164,9 @@ class Login extends Component {
               </button>
             </div>
           </div>
+          </div>
+          </div>
+        
         </div>
       </div>
 
