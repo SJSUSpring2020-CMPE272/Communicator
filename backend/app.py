@@ -7,6 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 import numpy as np
+import tensorflow as tf
 import cv2
 from keras.models import model_from_json
 
@@ -16,7 +17,7 @@ model = model_file.read()
 model_file.close()
 model = model_from_json(model)
 # load weights into new model
-model.load_weights("model-bw.h5")
+model.load_weights("model-bw.h5") 
 
 def from_base64(base64_data):
     nparr = np.fromstring(base64_data.decode('base64'), np.uint8)
@@ -37,8 +38,17 @@ def get_threshed_image(cv_image):
     return roi
 
 def predict_result(threshed_image):
+    # # Loading the model
+    # model_file = open("model-bw.json", "r")
+    # model = model_file.read()
+    # model_file.close()
+    # model = model_from_json(model)
+    # # load weights into new model
+    model.load_weights("model-bw.h5") 
     cv2.imwrite('thresh.jpg', threshed_image)
     result = model.predict_classes(threshed_image.reshape(1, 64, 64, 1))[0]
+    result1 = model.predict_proba(threshed_image.reshape(1, 64, 64, 1))[0]
+    print('\nPredict Fuction Output:', result1)
     with open('classes.txt') as json_file:
         classes = json.load(json_file)
         listOfItems = classes.items()
@@ -72,4 +82,4 @@ def isAppup():
     return "Application is up"
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0',debug=True)
+  app.run(host='0.0.0.0',port=80,debug = True)

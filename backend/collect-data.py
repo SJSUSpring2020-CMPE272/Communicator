@@ -2,9 +2,9 @@ import numpy as np
 import os
 import cv2
 
-take_train_samples=10
-take_test_samples=7
-trainWords=["Hello","How","Are","You","I","Good","Beautiful","Love","Weather","Nice","Day","Thanks","Am","Working","Training"]
+take_train_samples=1500
+take_test_samples=300
+trainWords=["Hello","How","Are","You","I","Good","Beautiful","Love","Weather","Ok","Day","Thanks","Am","Working"]
 
 if not os.path.exists("dataset"):
     os.makedirs("dataset")

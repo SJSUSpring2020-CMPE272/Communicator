@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Node_API_URL, Python_API_URL } from "../Constants";
 import axios from "axios";
 import Webcam from "react-webcam";
-import CameraOff from '../video-not-working.png'
+import CameraOff from "../video-not-working.png";
 import "./index.css";
 const videoConstraints = {
   width: 1280,
@@ -37,8 +37,10 @@ const WebcamCapture = () => {
     );
   };
   function predict(image) {
+    const data = { image_txt: image };
     axios
-      .post(Python_API_URL + "predict", { image_txt: image })
+      .post(Node_API_URL + "api/v1/predict", data)
+      // .post(Python_API_URL + "predict", { image_txt: image })
       .then((response) => {
         response.data =
           document.getElementById("result").value + " " + response.data;
@@ -58,7 +60,7 @@ const WebcamCapture = () => {
   }, [webcamRef]);
 
   return (
-    <div >
+    <div>
       <h1>SIGN LANGUAGE INTERPRETER</h1>
       <div className="row">
         <div className="col-md-6">
@@ -66,7 +68,11 @@ const WebcamCapture = () => {
             <div className="row">
               <div className="col-md-6">
                 {toggleCam && (
-                  <button onClick={capture} className="webcam-controls" autoFocus>
+                  <button
+                    onClick={capture}
+                    className="webcam-controls"
+                    autoFocus
+                  >
                     <span className="fa-stack fa-lg icons">
                       <i
                         className="fa fa-camera fa-2x icons"
@@ -76,7 +82,6 @@ const WebcamCapture = () => {
                     Capture Sign
                   </button>
                 )}
-
               </div>
 
               <div className="col-md-6">
@@ -94,25 +99,25 @@ const WebcamCapture = () => {
                         title="Turn off camera"
                       ></i>
                     </span>{" "}
-                  Turn off camera
+                    Turn off camera
                   </button>
                 ) : (
-                    <button
+                  <button
+                    onClick={() => {
+                      setToggleCam(!toggleCam);
+                    }}
+                    className="webcam-controls"
+                  >
+                    <i
+                      className="fa fa-video-camera fa-2x icons"
+                      title="Turn on camera"
                       onClick={() => {
                         setToggleCam(!toggleCam);
                       }}
-                      className="webcam-controls"
-                    >
-                      <i
-                        className="fa fa-video-camera fa-2x icons"
-                        title="Turn on camera"
-                        onClick={() => {
-                          setToggleCam(!toggleCam);
-                        }}
-                      ></i>{" "}
-                  Turn on camera
-                    </button>
-                  )}
+                    ></i>{" "}
+                    Turn on camera
+                  </button>
+                )}
               </div>
             </div>
             <div className="row">
@@ -133,20 +138,22 @@ const WebcamCapture = () => {
                 {result && (
                   <button className="webcam-controls" onClick={speak}>
                     <i class="fa fa-volume-up fa-2x icons"></i>
-                  Speak
+                    Speak
                   </button>
                 )}
               </div>
               <div className="col-md-6">
-                {result && (<audio
-                  ref={audioElementRef}
-                  autoPlay
-                  id="audio"
-                  className={`audio`}
-                  controls="controls"
-                >
-                  Your browser does not support the audio element.
-                </audio>)}
+                {result && (
+                  <audio
+                    ref={audioElementRef}
+                    autoPlay
+                    id="audio"
+                    className={`audio`}
+                    controls="controls"
+                  >
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
               </div>
             </div>
           </div>
@@ -167,8 +174,9 @@ const WebcamCapture = () => {
                 />
                 <div className="camera-border"></div>
               </div>
-            ):<img src={CameraOff}/>}
-
+            ) : (
+              <img src={CameraOff} />
+            )}
           </div>
         </div>
       </div>

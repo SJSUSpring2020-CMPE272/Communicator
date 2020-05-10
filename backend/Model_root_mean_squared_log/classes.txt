@@ -1,0 +1,1 @@
+{"Beautiful": 2, "Good": 4, "Love": 8, "Working": 12, "I": 7, "Am": 0, "Day": 3, "How": 6, "Weather": 11, "Are": 1, "Ok": 9, "You": 13, "Hello": 5, "Thanks": 10}
