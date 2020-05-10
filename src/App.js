@@ -12,6 +12,7 @@ import { startLogout } from "./firebase/auth";
 import Login from "./login";
 import TextToSpeech from "./TextToSpeech";
 import SpeechToText from "./SpeechToText";
+import DefaultHome  from "./defaultHome";
 
 import { logoutAction } from "./reducer/authReducer";
 import Webcam from "./webcam";
@@ -130,6 +131,8 @@ class App extends Component {
               <PrivateRoute path="/zoom-cc" component={ZoomCC} />
               <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
+              <Route path="/DefaultHome" component={DefaultHome} exact={true} />
+              
             </Switch>
           </div>
         </Router>

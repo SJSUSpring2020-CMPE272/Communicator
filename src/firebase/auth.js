@@ -13,7 +13,13 @@ export const startLogout = () => {
 };
 export const createUserAuthProvider = (email, password) => {
   return () => {
-    return firebase.auth().createUserWithEmailAndPassword(email, password);
+    return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+      var user = firebase.auth.currentUser;
+    }, function(error){
+      var errorCode = error.code;
+      var erroMessage = error.message
+      console.log("Error ", errorCode + " ", erroMessage);
+    });
   };
 };
 

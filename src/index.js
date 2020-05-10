@@ -26,10 +26,14 @@ const renderApp = () => {
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    console.log("User loggeed in is: ", user);
     fakeAuth.authenticate(() => {
       store.dispatch(loginAction(user));
       // store.dispatch(getEvents());
       if (window.location.href.toLowerCase().indexOf("login") >= 0) {
+        history.push("/");
+      }
+      if (window.location.href.toLowerCase().indexOf("defaulthome") >= 0) {
         history.push("/");
       }
       renderApp();

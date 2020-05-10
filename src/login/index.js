@@ -7,13 +7,30 @@ import LoginButtonPng from "../btn_google_signin_light_normal_web.png";
 
 import "./index.scss";
 class Login extends Component {
+
+  constructor(props) {
+    super(props);
+    this.setRedirectToRegister = this.setRedirectToRegister.bind(this);
+  }
+  
   state = {
     username: "",
     password: "",
     usernameValidation: "",
     passwordValidation: "",
     redirectToReferrer: false,
+    redirect: false,
   };
+  
+
+
+  setRedirectToRegister = () => {
+    console.log("Registering");
+    this.setState({
+      redirect: true
+    })
+  }
+
   GoogleLogin = () => {
     this.props.startLogin();
   };
@@ -55,8 +72,12 @@ class Login extends Component {
       return <Redirect to={from} />;
     }
 
+   if(this.state.redirect){
+     return  <Redirect to='/defaultHome' />
+    }
     return (
       <div id="LoginForm">
+       
         <div className="container">
           <div className="login-form">
             <div className="main-div">
@@ -116,6 +137,10 @@ class Login extends Component {
 
                 <button type="submit" className="btn btn-primary">
                   Login
+                </button>
+
+                <button className="btn btn-primary" onClick={this.setRedirectToRegister}>
+                  Register
                 </button>
               </form>
 
