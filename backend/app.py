@@ -38,12 +38,12 @@ def get_threshed_image(cv_image):
     return roi
 
 def predict_result(threshed_image):
-    # Loading the model
-    model_file = open("model-bw.json", "r")
-    model = model_file.read()
-    model_file.close()
-    model = model_from_json(model)
-    # load weights into new model
+    # # Loading the model
+    # model_file = open("model-bw.json", "r")
+    # model = model_file.read()
+    # model_file.close()
+    # model = model_from_json(model)
+    # # load weights into new model
     model.load_weights("model-bw.h5") 
     cv2.imwrite('thresh.jpg', threshed_image)
     result = model.predict_classes(threshed_image.reshape(1, 64, 64, 1))[0]
@@ -82,4 +82,4 @@ def isAppup():
     return "Application is up"
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0',port=443,debug = True)
+  app.run(host='0.0.0.0',port=80,debug = True)

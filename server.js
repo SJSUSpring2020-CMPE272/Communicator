@@ -1,37 +1,36 @@
 #! /usr/bin/env node
 
 require("dotenv").config({ silent: true });
+const axios = require("axios");
 const path = require("path");
 const express = require("express");
 const publicPath = path.join(__dirname, "build");
 const app = express();
 const TextToSpeechV1 = require("ibm-watson/text-to-speech/v1.js");
-const { IamAuthenticator,IamTokenManager } = require("ibm-watson/auth");
-const cors = require('cors');
-
-
-
+const { IamAuthenticator, IamTokenManager } = require("ibm-watson/auth");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+app.use(bodyParser.json({ limit: "10mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
+// app.use(bodyParser.raw());
 app.use(express.static(publicPath));
 app.use(cors());
-
-
 
 //Host react application on root url
 app.get("/", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-
 //Text To Speech API block begins
 const textToSpeech = new TextToSpeechV1({
   version: "2018-04-05",
   authenticator: new IamAuthenticator({
-    apikey: process.env.TEXT_TO_SPEECH_IAM_APIKEY || "type-key-here"
+    apikey: process.env.TEXT_TO_SPEECH_IAM_APIKEY || "type-key-here",
   }),
-  url: process.env.TEXT_TO_SPEECH_URL
+  url: process.env.TEXT_TO_SPEECH_URL,
 });
 
-const getFileExtension = acceptQuery => {
+const getFileExtension = (acceptQuery) => {
   const accept = acceptQuery || "";
   switch (accept) {
     case "audio/ogg;codecs=opus":
@@ -54,11 +53,10 @@ const getFileExtension = acceptQuery => {
  * Pipe the synthesize method
  */
 app.get("/api/v1/synthesize", async (req, res, next) => {
-  
   try {
     const { result } = await textToSpeech.synthesize(req.query);
     const transcript = result;
-    transcript.on("response", response => {
+    transcript.on("response", (response) => {
       if (req.query.download) {
         response.headers[
           "content-disposition"
@@ -77,12 +75,12 @@ app.get("/api/v1/synthesize", async (req, res, next) => {
 
 //Speech to Text API block begins
 const tokenManagerSpeechToText = new IamTokenManager({
-  apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY || '<iam_apikey>',
+  apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY || "<iam_apikey>",
 });
 
 const serviceUrl = process.env.SPEECH_TO_TEXT_URL;
 
-app.get('/api/v1/credentials', async (req, res, next) => {
+app.get("/api/v1/credentials", async (req, res, next) => {
   try {
     const accessToken = await tokenManagerSpeechToText.getToken();
     res.json({
@@ -94,18 +92,33 @@ app.get('/api/v1/credentials', async (req, res, next) => {
   }
 });
 //Speech to Text API block ends
-
+app.post("/api/v1/predict", (req, res) => {
+  axios
+    .post(
+      "http://ec2-3-94-3-128.compute-1.amazonaws.com:3000/" +
+        // "http://localhost:80/"
+        "predict",
+      req.body
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.send(response.data);
+    })
+    .catch((e) => {
+      // console.log("errrt",e);
+      res.sendStatus(500);
+    });
+  // res.sendStatus(200);
+});
 
 //Host react application on root url
 app.get("*", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-
-//Run application 
+//Run application
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log("Server running on port: %d", port);
 });
-
