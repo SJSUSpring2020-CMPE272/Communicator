@@ -41,7 +41,11 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     store.dispatch(logoutAction());
-    history.push("/Login");
+    if (window.location.href.toLowerCase().indexOf("defaulthome") >= 0) {
+      history.push("/defaultHome");
+    }else{
+      history.push("/Login");
+    }
     renderApp();
     console.log("logged out");
   }

@@ -19,20 +19,25 @@ ul.navbar-nav {
   li {
     padding: 12px;
     &:hover {
-      // background-color: #a0a0a09e;
-      background-color: white;
+      background-color: #a0a0a09e;
+      // background-color: white;
     }
   }
 }
 .navbar-header {
   padding: 12px;
   &:hover {
-    // background-color: #a0a0a09e;
-    background-color: white;
+    background-color: #a0a0a09e;
+    // background-color: white;
   }
+}
+
+.main{
+  height: 100vh;
+  background-color: #f1f4fd;
+  /* color:white; */
+  
 }
 nav {
   padding: 0px !important;
 }
-
-

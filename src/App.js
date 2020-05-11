@@ -12,11 +12,11 @@ import { startLogout } from "./firebase/auth";
 import Login from "./login";
 import TextToSpeech from "./TextToSpeech";
 import SpeechToText from "./SpeechToText";
-import DefaultHome  from "./defaultHome";
+import DefaultHome from "./defaultHome";
 
 import { logoutAction } from "./reducer/authReducer";
 import Webcam from "./webcam";
-import ZoomCC from './ZoomCC';
+import ZoomCC from "./ZoomCC";
 // import './Main.css';
 
 export const history = createBrowserHistory();
@@ -71,16 +71,29 @@ class App extends Component {
               <nav className="navbar navbar-default">
                 <div className="container-fluids">
                   <div
-                    className="navbar-header cursor"
+                    className="navbar-header"
                     onClick={() => {
                       history.push("/");
                     }}
+                    style={{
+                      fontSize: "21px",
+                      fontWeight: "bold"
+                    }}
                   >
-                    {/* <a className="navbar-brand" href="#"> */}
-                      Home
-                    {/* </a> */}
+                    Communicator
                   </div>
+
                   <ul className="nav navbar-nav">
+                    <li
+                      className="navigation-item cursor"
+                      onClick={() => {
+                        history.push(`/sign-to-speech`);
+                      }}
+                    >
+                      {/* <a href="#"> */}
+                      Sign To Speech
+                      {/* </a> */}
+                    </li>
                     <li
                       className="navigation-item cursor"
                       onClick={() => {
@@ -88,51 +101,55 @@ class App extends Component {
                       }}
                     >
                       {/* <a href="#"> */}
-                        Text To Speech
-                        {/* </a> */}
+                      Text To Speech
+                      {/* </a> */}
                     </li>
                     <li
-                    className="navigation-item cursor"
+                      className="navigation-item cursor"
                       onClick={() => {
                         history.push(`/speech-to-text`);
                       }}
                     >
                       {/* <a href="#"> */}
-                        Speech To Text
-                        {/* </a> */}
+                      Speech To Text
+                      {/* </a> */}
                     </li>
                     <li
-                    className="navigation-item cursor"
+                      className="navigation-item cursor"
                       onClick={() => {
                         history.push(`/zoom-cc`);
                       }}
                     >
                       {/* <a href="#"> */}
-                        Zoom CC
-                        {/* </a> */}
+                      Zoom CC
+                      {/* </a> */}
                     </li>
                   </ul>
                   <ul className="nav navbar-nav navbar-right">
-                    <li onClick={this.logOut} className='cursor'>
+                    <li onClick={this.logOut} className="cursor">
                       {/* <a href="#"> */}
-                        {/* <span className="glyphicon glyphicon-log-in" /> */}
-                         Logout
+                      {/* <span className="glyphicon glyphicon-log-in" /> */}
+                      Logout
                       {/* </a> */}
                     </li>
                   </ul>
                 </div>
               </nav>
             )}
-            <div style={{ marginTop: "10px" }} />
+            <div />
             <Switch>
               <PrivateRoute path="/" component={Webcam} exact={true} />
+              <PrivateRoute
+                path="/sign-to-speech"
+                component={Webcam}
+                exact={true}
+              />
               <PrivateRoute path="/speech-to-text" component={SpeechToText} />
               <PrivateRoute path="/text-to-speech" component={TextToSpeech} />
               <PrivateRoute path="/zoom-cc" component={ZoomCC} />
               <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
               <Route path="/DefaultHome" component={DefaultHome} exact={true} />
-              
             </Switch>
           </div>
         </Router>
