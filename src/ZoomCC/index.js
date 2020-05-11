@@ -275,7 +275,7 @@ export default class SpeechToText extends Component {
             </ul>
           </div>
         </div>
-        <Modal open={false} closeHandler={this.closeModal}>
+        <Modal open={open} closeHandler={this.closeModal}>
           <div className="container" style={{ textAlign: "center" }}>
             <video src={DemoVideo} width={950} autoPlay />
           </div>
