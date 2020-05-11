@@ -16,7 +16,8 @@ import DefaultHome from "./defaultHome";
 
 import { logoutAction } from "./reducer/authReducer";
 import Webcam from "./webcam";
-import ZoomCC from "./ZoomCC";
+import ZoomCC from './ZoomCC';
+import AboutUs from "./Home/inedx";
 // import './Main.css';
 
 export const history = createBrowserHistory();
@@ -73,7 +74,7 @@ class App extends Component {
                   <div
                     className="navbar-header"
                     onClick={() => {
-                      history.push("/");
+                      history.push("/home");
                     }}
                     style={{
                       fontSize: "21px",
@@ -126,6 +127,11 @@ class App extends Component {
                     </li>
                   </ul>
                   <ul className="nav navbar-nav navbar-right">
+                  {/* <li  onClick={() => {
+                        history.push(`/about-us`);
+                      }} className="navigation-item cursor">
+                      About Us
+                    </li> */}
                     <li onClick={this.logOut} className="cursor">
                       {/* <a href="#"> */}
                       {/* <span className="glyphicon glyphicon-log-in" /> */}
@@ -149,6 +155,7 @@ class App extends Component {
               <PrivateRoute path="/zoom-cc" component={ZoomCC} />
               <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
+              <Route path="/home" component={AboutUs} exact={true} />
               <Route path="/DefaultHome" component={DefaultHome} exact={true} />
             </Switch>
           </div>
