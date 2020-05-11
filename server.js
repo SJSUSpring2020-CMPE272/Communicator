@@ -95,9 +95,7 @@ app.get("/api/v1/credentials", async (req, res, next) => {
 app.post("/api/v1/predict", (req, res) => {
   axios
     .post(
-      "http://ec2-3-94-3-128.compute-1.amazonaws.com:3000/" +
-        // "http://localhost:80/"
-        "predict",
+      "http://ec2-54-164-171-127.compute-1.amazonaws.com:3000/" + "predict",
       req.body
     )
     .then((response) => {

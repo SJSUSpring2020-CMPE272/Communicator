@@ -17,6 +17,7 @@ import DefaultHome from "./defaultHome";
 import { logoutAction } from "./reducer/authReducer";
 import Webcam from "./webcam";
 import ZoomCC from "./ZoomCC";
+import AboutUs from "./Home/inedx";
 // import './Main.css';
 
 export const history = createBrowserHistory();
@@ -77,7 +78,7 @@ class App extends Component {
                     }}
                     style={{
                       fontSize: "21px",
-                      fontWeight: "bold"
+                      fontWeight: "bold",
                     }}
                   >
                     Communicator
@@ -138,7 +139,7 @@ class App extends Component {
             )}
             <div />
             <Switch>
-              <PrivateRoute path="/" component={Webcam} exact={true} />
+              <Route path="/" component={AboutUs} exact={true} />
               <PrivateRoute
                 path="/sign-to-speech"
                 component={Webcam}
@@ -149,6 +150,7 @@ class App extends Component {
               <PrivateRoute path="/zoom-cc" component={ZoomCC} />
               <Route path="/webcam" component={Webcam} exact={true} />
               <Route path="/Login" component={Login} exact={true} />
+              {/*DefaultHome page is actually register page*/}
               <Route path="/DefaultHome" component={DefaultHome} exact={true} />
             </Switch>
           </div>

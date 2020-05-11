@@ -36,7 +36,7 @@ export default class TextToSpeech extends Component {
     this.state = {
       voice: voices[1], // Allison v3 is the first voice
       error: null, // the error from calling /classify
-      text: "Mal", // default text
+      text: "", // default text
     };
     this.audioElementRef = React.createRef();
   }
@@ -84,17 +84,26 @@ export default class TextToSpeech extends Component {
   render() {
     const { text, hasAudio } = this.state;
     return (
-      <div className='container'>
+      <div className="container">
         <h1>Text To Speech</h1>
         <div className="row">
           <div className="col-sm-8">
-            <textarea name="text" value={text} onChange={this.textChange} />
+            <textarea
+              name="text"
+              value={text}
+              onChange={this.textChange}
+              placeholder="Enter text here..."
+            />
           </div>
 
           <div className="col-sm-4">
             <div className="row">
               <div className="col-sm-12">
-                <button onClick={this.speak} className="webcam-controls" style={{marginBottom:'50px'}}>
+                <button
+                  onClick={this.speak}
+                  className="webcam-controls"
+                  style={{ marginBottom: "50px" }}
+                >
                   <i class="fa fa-volume-up fa-2x icons"></i>
                   To Speech
                 </button>
