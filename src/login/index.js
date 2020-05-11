@@ -78,7 +78,7 @@ class Login extends Component {
         <div
           className="logo-text"
           onClick={() => {
-            history.push("/");
+            history.push("/home");
           }}
         >
           Communicator
