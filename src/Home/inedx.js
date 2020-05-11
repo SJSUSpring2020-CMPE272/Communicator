@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Router, Switch, Route, Redirect } from "react-router";
+import { Redirect } from "react-router";
 import { createBrowserHistory } from "history";
 //import "..//index.scss";
 import Backgroundimage from "../AboutUs.jpg";
@@ -12,18 +12,10 @@ class Home extends Component {
  
     constructor(props){
         super(props);
-
-        this.state ={
-          
-        }
     }
 
     render() {
       
-
-        if (this.state.redirect) {
-            return <Redirect to='/' />
-        }
         return (
             <div className="container" style={{backgroundColor : "darkgray" , margin : "20px"}}>
                 
