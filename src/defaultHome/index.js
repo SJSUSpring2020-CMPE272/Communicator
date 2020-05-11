@@ -64,7 +64,7 @@ class DefaultHome extends Component {
             <div id="LoginForm" style={{ margin: "10px" }}>
               <div className="login-form">
                 <div className="main-div">
-                  <div className="panel">
+                  <div className="panel" style={{ textAlign: "center" }}>
                     <h2>Register</h2>
                   </div>
                   <form
