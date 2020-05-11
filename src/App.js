@@ -127,6 +127,11 @@ class App extends Component {
                     </li>
                   </ul>
                   <ul className="nav navbar-nav navbar-right">
+                    {/* <li  onClick={() => {
+                        history.push(`/about-us`);
+                      }} className="navigation-item cursor">
+                      About Us
+                    </li> */}
                     <li onClick={this.logOut} className="cursor">
                       {/* <a href="#"> */}
                       {/* <span className="glyphicon glyphicon-log-in" /> */}
