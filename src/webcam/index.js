@@ -3,6 +3,7 @@ import { Node_API_URL, Python_API_URL } from "../Constants";
 import axios from "axios";
 import Webcam from "react-webcam";
 import CameraOff from "../video-not-working.png";
+import SignsBanner from "../signs-banner.jpeg";
 import "./index.css";
 const videoConstraints = {
   width: 1280,
@@ -179,6 +180,9 @@ const WebcamCapture = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="signs-banner-div">
+        <img src={SignsBanner} />
       </div>
     </div>
   );

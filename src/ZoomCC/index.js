@@ -4,7 +4,7 @@ import recognizeMicrophone from "watson-speech/speech-to-text/recognize-micropho
 import Axios from "axios";
 import Modal from "../Modal";
 import DemoVideo from "../zoom-cc-demo.mov";
-import './index.scss';
+import "./index.scss";
 
 export default class SpeechToText extends Component {
   state = {
@@ -239,7 +239,7 @@ export default class SpeechToText extends Component {
               </>
             )}
           </div>
-          <div className="col-md-5 dataCard">
+          <div className="col-md-6 dataCard">
             <h3>Posted Captions</h3>
             <hr />
             <div
@@ -255,7 +255,27 @@ export default class SpeechToText extends Component {
             </div>
           </div>
         </div>
-        <Modal open={open} closeHandler={this.closeModal}>
+        <div className="row">
+          <div className="col-md-5 dataCard">
+            <h4>Start using in just 3 simple steps:</h4>
+            <ul>
+              <li>Step 1 : Copy Third party API token from Zoom.</li>
+              <li>Step 2 : Paste API Token here.</li>
+              <li>Step 3 : Save Token and Start posting live captions.</li>
+            </ul>
+          </div>
+          <div className="col-md-6 dataCard">
+            <h3>Upcoming Features :</h3>
+            <ul>
+              <li>
+                Post live captions in multiple languages to attract/reach diverse
+                audience.
+              </li>
+              <li>Upload video/audio to generate transcript.</li>
+            </ul>
+          </div>
+        </div>
+        <Modal open={false} closeHandler={this.closeModal}>
           <div className="container" style={{ textAlign: "center" }}>
             <video src={DemoVideo} width={950} autoPlay />
           </div>
