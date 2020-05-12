@@ -1,4 +1,5 @@
 # Communicator (ML based Sign language Interpreter)
+[click here for demo](https://cmpe-272-sign-interpreter.mybluemix.net/)
 ## Abstract
 There are around 1 million deaf and dumb people in the world. One of the biggest challenge faced by these people is communicating with those around them and vice- versa. There are many institutions throghout the world which facilitate these differently abled people. But that takes special training and effort. 
 Our application can play a major role in this case.
@@ -31,5 +32,6 @@ This application can be useful at many places and personal use, e.g.
  - Ticket counters (Sign to speech for employee and speech to text for customer with hearing disability)
  - Attending any seminar or lecture (live Speech to Text for person with hearing disability)
  - Bank teller desk(Sign to speech for employee and speech to text for customer with hearing disability)
+ - Live zoom captioning using Speech to Text and Zoom API Token
  
 
